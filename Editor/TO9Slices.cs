@@ -1,9 +1,10 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+using static AVT.TextureOptimizer.TOUtils;
 
 namespace AVT.TextureOptimizer
 {
-    public static class OptimizeUISprite
+    public static class TO9Slices
     {
         #region Define
         private struct Outline
@@ -18,10 +19,10 @@ namespace AVT.TextureOptimizer
 
         #region Menu Item
 
-        [MenuItem(TOUtils.menuItem9Slices)]
-        public static void OptimizeSprite9Slices()
+        [MenuItem(menuItem9Slices)]
+        public static void OptimizeTexture9Slices()
         {
-            TOUtils.TransformSelectedTextures((texture, importer) =>
+            TransformSelectedTextures((texture, importer) =>
             {
                 var outline = Calculate9SlicesOutline(texture);
                 importer.spriteBorder = new Vector4(
@@ -29,7 +30,7 @@ namespace AVT.TextureOptimizer
                     outline.bot + 1,
                     outline.right - 1,
                     outline.top - 1);
-                return Trim(texture, outline);
+                return Slice(texture, outline);
             });
         }
 
@@ -37,7 +38,7 @@ namespace AVT.TextureOptimizer
 
         #region Core
 
-        private static Texture2D Trim(Texture2D texture, Outline outline)
+        private static Texture2D Slice(Texture2D texture, Outline outline)
         {
             var pixels = texture.GetPixels(
                 (int)texture.texelSize.x,
@@ -50,7 +51,7 @@ namespace AVT.TextureOptimizer
             newWidth += 4 - newWidth % 4;
             newHeight += 4 - newHeight % 4;
 
-            var res = new Texture2D(newWidth, newHeight);
+            var output = new Texture2D(newWidth, newHeight);
             var newPixels = new Color[newWidth * newHeight];
 
             for (var i = 0; i < newPixels.Length; i++)
@@ -63,11 +64,10 @@ namespace AVT.TextureOptimizer
                 newPixels[i] = pixels[texture.width * mapY + mapX];
             }
 
-            res.name = texture.name;
-            res.SetPixels(newPixels);
-            res.Apply();
+            output.SetPixels(newPixels);
+            output.Apply();
 
-            return res;
+            return output;
         }
 
         private static Outline Calculate9SlicesOutline(Texture2D texture)
@@ -154,8 +154,7 @@ namespace AVT.TextureOptimizer
 
             return true;
         }
-
-
+        
         #endregion
     }
 }

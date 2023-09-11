@@ -1,64 +1,43 @@
-﻿# Fetch Google Sheet
-
-Fetch data from Google Sheet to Unity.
-
-- [Fetch Google Sheet](#fetch-google-sheet)
-  * [Description](#description)
-  * [Installation](#installation)
-    - [Requirement](#requirement)
-    - [Using Unity Package Manager](#using-unity-package-manager)
-  * [Usage](#usage)
-    + [2. Add tweens, intervals and callbacks to your Sequence](#2-add-tweens-intervals-and-callbacks-to-your-sequence)
-  * [Example](#example)
-  * [Documentation](#documentation)
+﻿# Texture Optimizer
 
 > [Description](#description) 
 | [Installation](#installation)
 | [Usage](#usage)
-| [Example](#example)
-| [Documentation](DOCUMENTATION.md)
  
 ## Description
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+Let's optimize your texture with **Texture Optimizer**.
+
+#### Available optimizer
+
+| Name                | Features                                                                                | Shortcut |
+|---------------------|-----------------------------------------------------------------------------------------|----------|
+| **9-Slices**        | Modify the texture border into a 9-slice form and reduce redundant pixels               | Alt + Q  |
+| **Scale to Div 4**  | Scale the texture size to be divisible by 4                                             | Alt + S  |
+| **Resize to Div 4** | Resize the texture size to be divisible by 4 (by adding transparent pixels)             | Alt + R  |
+| **Trim Texture**    | Trim redundant transparent pixels                                                       | none     |
+| **Is Auto Trim**    | Enable automatic texture trimming during transformations (scaling, resizing, 9-slicing) | none     |
 
 ## Installation
 
 #### Requirement
 
 * Unity 2020.3 or later
-* Package: Editor Coroutines ([com.unity.editorcoroutines](https://docs.unity3d.com/Packages/com.unity.editorcoroutines@1.0/manual/index.html))
+* No other packages are required.
 
 #### Using Unity Package Manager
 
 To use this in your Unity project import it from Unity Package Manager. You can [download it and import it from your hard drive](https://docs.unity3d.com/Manual/upm-ui-local.html), or [link to it from github directly](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
 
 > Git Url to install:
-> https://github.com/anviettrung/UP-Fetch-Google-Sheet.git
+> https://github.com/anviettrung/Texture-Optimizer.git
 > 
 ## Usage
 
-<details>
-  <summary> <b>static DOTween.Sequence()</b> </summary>
+**Step 1**: Select one or multiple textures from the **Project window**.
 
-  > Returns a usable Sequence which you can store and add tweens to.
-  > ```
-  > Sequence mySequence = DOTween.Sequence();
-  > ```
-  
-</details> 
+**Step 2**: Transform the texture using functions from **Window/Texture Optimizer/**
 
-### 2. Add tweens, intervals and callbacks to your Sequence
-Note that all these methods need to be applied before the Sequence starts (usually the next frame after you create it, unless it's paused), or they won't have any effect.
-
-Also note that any nested Tweener/Sequence needs to be fully created before adding it to a Sequence, because after that it will be locked.
-
-Delays and loops (when not infinite) will work even inside nested tweens.
-
-## Example
-
-## Documentation
-
-### 
 
 
 
