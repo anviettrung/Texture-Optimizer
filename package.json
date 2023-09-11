@@ -1,0 +1,23 @@
+{
+  "name": "com.avt.texture-optimizer",
+  "version": "1.0.0",
+  "displayName": "Texture Optimizer",
+  "description": "Optimize texture size.",
+  "unity": "2020.3",
+  "dependencies": {
+  },
+  "author": {
+    "name": "An Viet Trung",
+    "email": "an.viettrung.m@gmail.com",
+    "url": "https://github.com/anviettrung"
+  },
+  "keywords": [
+    "tool",
+    "texture",
+    "optimize",
+    "optimizer",
+    "size"
+  ],
+  "samples": [
+  ]
+}
