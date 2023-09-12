@@ -36,11 +36,12 @@ To use this in your Unity project import it from Unity Package Manager. You can 
 
 **Step 1**: Select one or multiple textures from the **Project window**.
 
-<img src="https://github.com/anviettrung/Texture-Optimizer/assets/40160468/ee7a9d23-86ac-48db-9efc-efb069df69ff" width=50% height=50%>
+![image](https://github.com/anviettrung/Texture-Optimizer/assets/40160468/a43f0f06-3273-41ae-8f85-9f23e8a2e910)
 
 **Step 2**: Transform the texture using functions from **Window/Texture Optimizer/**
 
-<img src="https://github.com/anviettrung/Texture-Optimizer/assets/40160468/df57d65a-fc8e-423d-84e6-f56bc1998f27" width=50% height=50%>
+![image](https://github.com/anviettrung/Texture-Optimizer/assets/40160468/2c7573e1-c9a7-4d95-8d20-6059f63667f7)
+
 
 
 
