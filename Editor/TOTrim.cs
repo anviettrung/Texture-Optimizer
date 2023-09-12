@@ -7,8 +7,6 @@ namespace AVT.TextureOptimizer
 {
     public static class TOTrim
     {
-        
-        
         #region Menu Item
 
         [MenuItem(menuItemIsAutoTrimCheck)]

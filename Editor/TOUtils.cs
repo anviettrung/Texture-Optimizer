@@ -7,12 +7,12 @@ namespace AVT.TextureOptimizer
     internal static class TOUtils // Stand for Texture Optimizer Utilities
     {
         #region Define Constant
-        
-        internal const string pluginFolderPath = "Window/Texture Optimizer/";
+
+        private const string pluginFolderPath = "Window/Texture Optimizer/";
 
         private const string hotkey9Slices = " &q";
         private const string hotkeyScaleToDiv4 = " &s";
-        private const string hotkeyResizeToDiv4 = " &r";
+        private const string hotkeyResizeToDiv4 = " &e";
 
         internal const string menuItem9Slices = pluginFolderPath + "9-Slices" + hotkey9Slices;
         internal const string menuItemScaleToDiv4 = pluginFolderPath + "Scale to Div 4" + hotkeyScaleToDiv4;
@@ -20,17 +20,17 @@ namespace AVT.TextureOptimizer
         internal const string menuItemTrimTexture = pluginFolderPath + "Trim Texture";
         
         internal const string menuItemIsAutoTrimCheck = pluginFolderPath + "Is Auto Trim";
-        internal const string menuItemIsDebugCheck = pluginFolderPath + "Is Debug";
+        private const string menuItemIsDebugCheck = pluginFolderPath + "Is Debug";
 
-        
-        internal const string keyIsDebug = "avt_texture_optimizer_isDebug";
-        internal const string keyIsAutoTrim = "avt_texture_optimizer_isAutoTrim";
+
+        private const string keyIsDebug = "avt_texture_optimizer_isDebug";
+        private const string keyIsAutoTrim = "avt_texture_optimizer_isAutoTrim";
         
         #endregion
 
         #region Editor Prefs
-        
-        public static bool IsDebug
+
+        private static bool IsDebug
         {
             get => EditorPrefs.GetBool(keyIsDebug, false);
             set
@@ -40,7 +40,7 @@ namespace AVT.TextureOptimizer
             }
         }
         
-        public static bool IsAutoTrim
+        internal static bool IsAutoTrim
         {
             get => EditorPrefs.GetBool(keyIsAutoTrim, false);
             set
@@ -60,7 +60,16 @@ namespace AVT.TextureOptimizer
         }
 
         #endregion
-        
+
+        #region Menu Item
+
+        [MenuItem(menuItemIsDebugCheck)]
+        private static void ToggleIsAutoTrim() => IsDebug = !IsDebug;
+
+        #endregion
+
+        #region Core
+
         public static void TransformSelectedTextures(
             Func<Texture2D, TextureImporter, Texture2D> transform)
         {
@@ -87,7 +96,8 @@ namespace AVT.TextureOptimizer
                 importer.isReadable = readableStatus;
                 importer.SaveAndReimport();
 
-                Debug.Log($"<color=green><b>Complete Optimize:</b></color> {textureName}");
+                if (IsDebug)
+                    Debug.Log($"<color=green><b>Complete Optimize:</b></color> {textureName}");
             }
         }
         
@@ -95,6 +105,8 @@ namespace AVT.TextureOptimizer
         {
             System.IO.File.WriteAllBytes(filePath, texture.EncodeToPNG());
         }
+
+        #endregion
     }
 }
 

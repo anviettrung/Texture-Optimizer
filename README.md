@@ -15,9 +15,9 @@ Let's optimize your texture with **Texture Optimizer**.
 |---------------------|-----------------------------------------------------------------------------------------|----------|
 | **9-Slices**        | Modify the texture border into a 9-slice form and reduce redundant pixels               | Alt + Q  |
 | **Scale to Div 4**  | Scale the texture size to be divisible by 4                                             | Alt + S  |
-| **Resize to Div 4** | Resize the texture size to be divisible by 4 (by adding transparent pixels)             | Alt + R  |
+| **Resize to Div 4** | Resize the texture size to be divisible by 4 (by adding transparent pixels)             | Alt + E  |
 | **Trim Texture**    | Trim redundant transparent pixels                                                       | none     |
-| **Is Auto Trim**    | Enable automatic texture trimming during transformations (scaling, resizing, 9-slicing) | none     |
+| **Is Auto Trim**    | Enable automatic texture trimming before transformations (scaling, resizing, 9-slicing) | none     |
 | **Is Debug**        | Enable debug log after optimizing (true by default)                                     | none     |
 
 ## Installation
