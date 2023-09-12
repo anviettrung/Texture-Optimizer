@@ -18,10 +18,47 @@ namespace AVT.TextureOptimizer
         internal const string menuItemScaleToDiv4 = pluginFolderPath + "Scale to Div 4" + hotkeyScaleToDiv4;
         internal const string menuItemResizeToDiv4 = pluginFolderPath + "Resize to Div 4" + hotkeyResizeToDiv4;
         internal const string menuItemTrimTexture = pluginFolderPath + "Trim Texture";
+        
         internal const string menuItemIsAutoTrimCheck = pluginFolderPath + "Is Auto Trim";
+        internal const string menuItemIsDebugCheck = pluginFolderPath + "Is Debug";
+
         
-        internal const string keyIsAutoTrim = "texture_optimizer_isAutoTrim";
+        internal const string keyIsDebug = "avt_texture_optimizer_isDebug";
+        internal const string keyIsAutoTrim = "avt_texture_optimizer_isAutoTrim";
         
+        #endregion
+
+        #region Editor Prefs
+        
+        public static bool IsDebug
+        {
+            get => EditorPrefs.GetBool(keyIsDebug, false);
+            set
+            {
+                EditorPrefs.SetBool(keyIsDebug, value);
+                Menu.SetChecked(menuItemIsDebugCheck, value);
+            }
+        }
+        
+        public static bool IsAutoTrim
+        {
+            get => EditorPrefs.GetBool(keyIsAutoTrim, false);
+            set
+            {
+                EditorPrefs.SetBool(keyIsAutoTrim, value);
+                Menu.SetChecked(menuItemIsAutoTrimCheck, value);
+            }
+        }
+        
+        static TOUtils()
+        {
+            EditorApplication.delayCall += () =>
+            {
+                Menu.SetChecked(menuItemIsAutoTrimCheck, IsAutoTrim);
+                Menu.SetChecked(menuItemIsDebugCheck, IsDebug);
+            };
+        }
+
         #endregion
         
         public static void TransformSelectedTextures(
@@ -39,6 +76,9 @@ namespace AVT.TextureOptimizer
                 var readableStatus = importer.isReadable;
                 importer.isReadable = true;
                 importer.SaveAndReimport();
+
+                if (IsAutoTrim)
+                    texture = TOTrim.Trim(texture);
                 
                 texture = transform(texture, importer);
                 

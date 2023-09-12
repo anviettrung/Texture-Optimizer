@@ -7,23 +7,7 @@ namespace AVT.TextureOptimizer
 {
     public static class TOTrim
     {
-        static TOTrim()
-        {
-            EditorApplication.delayCall += () =>
-            {
-                Menu.SetChecked(menuItemIsAutoTrimCheck, IsAutoTrim);
-            };
-        }
         
-        private static bool IsAutoTrim
-        {
-            get => EditorPrefs.GetBool(keyIsAutoTrim, false);
-            set
-            {
-                EditorPrefs.SetBool(keyIsAutoTrim, value);
-                Menu.SetChecked(menuItemIsAutoTrimCheck, value);
-            }
-        }
         
         #region Menu Item
 
@@ -40,7 +24,7 @@ namespace AVT.TextureOptimizer
 
         #region Core
 
-        private static Texture2D Trim(Texture2D texture)
+        public static Texture2D Trim(Texture2D texture)
         {
             var pixels = texture.GetPixels(
                 (int)texture.texelSize.x, 
